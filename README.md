@@ -14,11 +14,10 @@ It is based on the Docker images of [Martin Hemlich](https://github.com/martin-h
 
 ## 🐍 How to Deploy
 
-One click deploy on Railway.app and setup the TYPO3 version in the environment variables
+One click deploy on Railway.app and setup the TYPO3 version in the environment variables. Available versions: https://hub.docker.com/r/martinhelmich/typo3/tags
 
 ```bash
-    TYPO3_VERSION=latest # Available versions: https://hub.docker.com/r/martinhelmich/typo3/tags
-    
+TYPO3_VERSION=latest
 ```
 
 2. Wait for Build & Deployment to Finish
