@@ -2,6 +2,7 @@
 
 !/.gitignore
 !/Dockerfile
+!/docker-compose.yml
 !/LICENSE
 !/logo-typo3.png
 !/README.md

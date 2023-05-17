@@ -1,0 +1,38 @@
+version: '3.6'
+
+services:
+  typo3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - TYPO3_VERSION=11
+    container_name: typo3
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Amsterdam
+      - TYPO3_CONTEXT=Development
+    ports:
+      - 8144:80
+    networks:
+      - typo3
+
+  db:
+    image: mariadb:10.5
+    container_name: db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=typo3
+      - MYSQL_DATABASE=typo3
+      - MYSQL_USER=typo3
+      - MYSQL_PASSWORD=typo3
+      - MYSQL_INITDB_SKIP_TZINFO=yes
+      - TZ=Europe/Amsterdam
+    volumes:
+      - ./data/db:/var/lib/mysql
+    networks:
+      - typo3
+
+networks:
+  typo3:
+    driver: bridge
