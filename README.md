@@ -33,12 +33,11 @@ SETUP_TYPO3_SRC - Setup symlinks for TYPO3 source that is shipped with the image
 SETUP_TYPO3 - Attempts to setup TYPO3 ands adds a basic .htaccess file and cache configuration. (defaults to "true")
 ```
 
-1. Wait for Build & Deployment to Finish
-2. Click the "Deploy on Railway" button and deploy the app.
-3. Take a look to you MYSQL credentials in the Railway dashboard.
-4. Open the custom URL (<https://YOURTYPO3.up.railway.app>) and enter your database credentials in the setup wizard.
-5. Setup your TYPO3 instance and create a admin user.
-6. Enjoy your TYPO3 instance.
+1. Click the "Deploy on Railway" button and wait for build & deployment to finish.
+2. Take a look to you MYSQL credentials in the Railway dashboard.
+3. Open the custom URL (<https://YOURTYPO3.up.railway.app>) and enter your database credentials in the setup wizard.
+4. Setup your TYPO3 instance and create a admin user.
+5. Enjoy your TYPO3 instance.
 
 ## 🐳  Local Development
 
