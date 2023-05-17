@@ -1,6 +1,9 @@
 # TYPO3 for railway.app
 
 Deploy TYPO3 CMS on railway with automated setup.
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/jo_8UU?referralCode=2_sIT9)
+
 It is based on the Docker images of [Martin Hemlich](https://github.com/martin-helmich/docker-typo3)
 
 ## ✨ Features
@@ -11,7 +14,7 @@ It is based on the Docker images of [Martin Hemlich](https://github.com/martin-h
 
 ## 🐍 How to Deploy
 
-1. Click Deploy on Railway and setup your credentials in the environment variables
+One click deploy on Railway.app and setup the TYPO3 version in the environment variables
 
 ```bash
     TYPO3_VERSION=latest # Available versions: https://hub.docker.com/r/martinhelmich/typo3/tags
