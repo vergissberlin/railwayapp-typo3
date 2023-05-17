@@ -6,16 +6,22 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - TYPO3_VERSION=11
+        - TYPO3_VERSION=11.5
     container_name: typo3
     restart: unless-stopped
     environment:
-      - TZ=Europe/Amsterdam
-      - TYPO3_CONTEXT=Development
+      - TYPO3_ADMIN_USERNAME=admin
+      - TYPO3_ADMIN_PASSWORD=adminadmin
+      - TYPO3_DB_HOST=db
+      - TYPO3_DB_NAME=typo3
+      - TYPO3_DB_USERNAME=typo3
+      - TYPO3_DB_PASSWORD=typo3
+    volumes:
+      - railway-typo3-app:/var/www/html/
     ports:
       - 8144:80
     networks:
-      - typo3
+      - db
 
   db:
     image: mariadb:10.5
@@ -28,11 +34,15 @@ services:
       - MYSQL_PASSWORD=typo3
       - MYSQL_INITDB_SKIP_TZINFO=yes
       - TZ=Europe/Amsterdam
+    command: '--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
     volumes:
-      - ./data/db:/var/lib/mysql
+      - railway-typo3-db:/var/lib/mysq
     networks:
-      - typo3
+      - db
 
 networks:
-  typo3:
-    driver: bridge
+  db:
+
+volumes:
+  railway-typo3-app:
+  railway-typo3-db:

@@ -1,3 +1,3 @@
 ARG TYPO3_VERSION=latest
-
-FROM martinhelmich/typo3:${TYPO3_VERSION}
+# See available versions at https://hub.docker.com/r/crinis/typo3/tags
+FROM crinis/typo3:${TYPO3_VERSION}
