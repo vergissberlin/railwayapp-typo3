@@ -39,6 +39,10 @@ SETUP_TYPO3 - Attempts to setup TYPO3 ands adds a basic .htaccess file and cache
 4. Setup your TYPO3 instance and create a admin user.
 5. Enjoy your TYPO3 instance.
 
+## 🪲 Bug Reporting
+
+If you find a bug in TYPO3 template for reailway, you can [submit an issue](https://github.com/vergissberlin/railwayapp-typo3/issues/new) to the GitHub Repository. Even better you can submit a Pull Request with a fix.
+
 ## 🐳  Local Development
 
 ```bash
