@@ -18,7 +18,7 @@ https://hub.docker.com/r/crinis/typo3
 One click deploy on Railway.app and setup the TYPO3 version in the environment variables. Available versions: <https://hub.docker.com/r/crinis/typo3/tags>
 
 ```bash
-TYPO3_VERSION latest
+VERSION latest
 TYPO3_ADMIN_USERNAME - Initial admin username when installing TYPO3. (defaults to "admin")
 TYPO3_ADMIN_PASSWORD - Initial admin and Install Tool password when installing TYPO3.
 TYPO3_DB_HOST - Database host.
