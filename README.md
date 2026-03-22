@@ -1,111 +1,115 @@
 # TYPO3 Railway.app Template
 
-Dieses Template ermöglicht die schnelle Einrichtung einer TYPO3-Installation mit Docker und Railway.app.
+<p align="center">
+  <img src="logo-typo3.png" alt="TYPO3" width="200" />
+</p>
+
+This template helps you spin up a TYPO3 installation quickly with Docker and Railway.app.
 
 ## Features
 
 - TYPO3 12.4 LTS
 - MariaDB 10.11
-- Optimierte Docker-Konfiguration
-- Healthchecks für bessere Stabilität
-- Umgebungsvariablen für sichere Konfiguration
+- Tuned Docker setup
+- Health checks for more stable runs
+- Environment variables for safer configuration
 
-## Voraussetzungen
+## Prerequisites
 
-- Docker und Docker Compose
-- Railway.app CLI (optional für Railway.app Deployment)
+- Docker and Docker Compose
+- Railway.app CLI (optional, for Railway.app deployment)
 
-## Schnellstart
+## Quick start
 
-1. Repository klonen:
+1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/railwayapp-typo3.git
    cd railwayapp-typo3
    ```
 
-2. Umgebungsvariablen konfigurieren:
+2. Configure environment variables:
+
    ```bash
    cp .env.example .env
    ```
-   Bearbeiten Sie die `.env`-Datei und setzen Sie sichere Passwörter.
 
-3. Container starten:
+   Edit `.env` and set strong passwords.
+
+3. Start the containers:
+
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
-4. TYPO3 ist nun unter `http://localhost:8080` erreichbar.
+4. Open TYPO3 at [http://localhost:8080](http://localhost:8080).
 
-## Konfiguration
+## Configuration
 
-### Umgebungsvariablen
+### Environment variables
 
-| Variable | Beschreibung | Standard |
-|----------|--------------|----------|
-| TYPO3_ADMIN_USERNAME | Admin-Benutzername | admin |
-| TYPO3_ADMIN_PASSWORD | Admin-Passwort | - |
-| TYPO3_DB_NAME | Datenbankname | typo3 |
-| TYPO3_DB_USERNAME | Datenbankbenutzer | typo3 |
-| TYPO3_DB_PASSWORD | Datenbankpasswort | - |
-| MYSQL_ROOT_PASSWORD | MariaDB Root-Passwort | - |
-| TYPO3_CONTEXT | TYPO3-Kontext | Development |
-| TZ | Zeitzone | Europe/Berlin |
+| Variable               | Description              | Default     |
+|------------------------|--------------------------|-------------|
+| `TYPO3_ADMIN_USERNAME` | Admin username           | `admin`     |
+| `TYPO3_ADMIN_PASSWORD` | Admin password           | —           |
+| `TYPO3_DB_NAME`        | Database name            | `typo3`     |
+| `TYPO3_DB_USERNAME`    | Database user            | `typo3`     |
+| `TYPO3_DB_PASSWORD`    | Database password        | —           |
+| `MYSQL_ROOT_PASSWORD`  | MariaDB root password    | —           |
+| `TYPO3_CONTEXT`        | TYPO3 application context | `Development` |
+| `TZ`                   | Time zone                | `Europe/Berlin` |
 
 ### Volumes
 
-- `railway-typo3-app`: TYPO3-Dateien
-- `railway-typo3-db`: MariaDB-Daten
+- `railway-typo3-app`: TYPO3 files
+- `railway-typo3-db`: MariaDB data
 
-## Deployment auf Railway.app
+### Database (Docker Compose)
 
-1. Railway.app CLI installieren
-2. Projekt initialisieren:
+From the TYPO3 container, the database host is `db`. User, password, and database name are the values you set in `.env` (`TYPO3_DB_*`). See `docker-compose.yml` for how they are wired.
+
+## Deploying to Railway.app
+
+1. Install the Railway.app CLI.
+2. Initialize the project:
+
    ```bash
    railway init
    ```
-3. Umgebungsvariablen setzen:
+
+3. Set environment variables:
+
    ```bash
    railway variables set TYPO3_ADMIN_PASSWORD=your-secure-password
    railway variables set TYPO3_DB_PASSWORD=your-secure-password
    railway variables set MYSQL_ROOT_PASSWORD=your-secure-password
    ```
-4. Deployen:
+
+4. Deploy:
+
    ```bash
    railway up
    ```
 
-## Runtime-Defaults auf Railway
+## Railway runtime defaults
 
-Dieses Template nutzt `railway.toml` mit folgenden Defaults:
+This template uses `railway.toml` with these defaults:
 
-- Build ueber `DOCKERFILE`
-- Healthcheck auf `/`
-- Restart-Policy `ON_FAILURE` mit maximalen Retries
+- Build via `DOCKERFILE`
+- Health check on `/`
+- Restart policy `ON_FAILURE` with a maximum number of retries
 
-## Sicherheit
+## Security
 
-- Alle sensiblen Daten werden über Umgebungsvariablen konfiguriert
-- Standard-Passwörter wurden entfernt
-- Healthchecks für bessere Stabilität
-- Optimierte MariaDB-Konfiguration
+- Sensitive values are configured through environment variables
+- Default passwords are not baked into the image
+- Health checks for more stable operation
+- Tuned MariaDB configuration
 
 ## Support
 
-Bei Fragen oder Problemen erstellen Sie bitte ein Issue im GitHub-Repository.
+Open an issue in the GitHub repository if you have questions or run into problems.
 
-## Lizenz
+## License
 
-MIT License - siehe [LICENSE](LICENSE) Datei für Details.
-
-```bash
-docker compose up -d
-```
-
-Open <http://localhost:8144> in access your typo3 instance. You can find the database credentials in the docker-compose.yml file.
-
-```text
-host:           db
-user:           typo3
-password:  secret
-database:   typo3
-```
+MIT License — see the [LICENSE](LICENSE) file for details.
