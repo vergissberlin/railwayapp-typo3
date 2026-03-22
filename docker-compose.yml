@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.8'
 
 services:
   typo3:
@@ -6,42 +6,57 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - TYPO3_VERSION=11.5
+        - TYPO3_VERSION=12.4
     container_name: typo3
     restart: unless-stopped
     environment:
-      - TYPO3_ADMIN_USERNAME=admin
-      - TYPO3_ADMIN_PASSWORD=adminadmin
+      - TYPO3_ADMIN_USERNAME=${TYPO3_ADMIN_USERNAME:-admin}
+      - TYPO3_ADMIN_PASSWORD=${TYPO3_ADMIN_PASSWORD}
       - TYPO3_DB_HOST=db
-      - TYPO3_DB_NAME=typo3
-      - TYPO3_DB_USERNAME=typo3
-      - TYPO3_DB_PASSWORD=typo3
+      - TYPO3_DB_NAME=${TYPO3_DB_NAME:-typo3}
+      - TYPO3_DB_USERNAME=${TYPO3_DB_USERNAME:-typo3}
+      - TYPO3_DB_PASSWORD=${TYPO3_DB_PASSWORD}
+      - TYPO3_CONTEXT=${TYPO3_CONTEXT:-Development}
     volumes:
       - railway-typo3-app:/var/www/html/
     ports:
-      - 8144:80
+      - "8080:80"
     networks:
       - db
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/typo3/install.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   db:
-    image: mariadb:10.5
+    image: mariadb:10.11
     container_name: db
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=typo3
-      - MYSQL_DATABASE=typo3
-      - MYSQL_USER=typo3
-      - MYSQL_PASSWORD=typo3
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${TYPO3_DB_NAME:-typo3}
+      - MYSQL_USER=${TYPO3_DB_USERNAME:-typo3}
+      - MYSQL_PASSWORD=${TYPO3_DB_PASSWORD}
       - MYSQL_INITDB_SKIP_TZINFO=yes
-      - TZ=Europe/Amsterdam
-    command: '--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
+      - TZ=${TZ:-Europe/Berlin}
+    command: '--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb-buffer-pool-size=256M'
     volumes:
-      - railway-typo3-db:/var/lib/mysq
+      - railway-typo3-db:/var/lib/mysql
     networks:
       - db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   db:
+    driver: bridge
 
 volumes:
   railway-typo3-app:

@@ -1,49 +1,101 @@
-# TYPO3 for railway.app
+# TYPO3 Railway.app Template
 
-Deploy TYPO3 CMS on railway with automated setup.
+Dieses Template ermöglicht die schnelle Einrichtung einer TYPO3-Installation mit Docker und Railway.app.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/jo_8UU?referralCode=2_sIT9)
+## Features
 
-It is based on the Docker images of [Martin Hemlich](https://github.com/martin-helmich/docker-typo3)
-https://hub.docker.com/r/crinis/typo3
+- TYPO3 12.4 LTS
+- MariaDB 10.11
+- Optimierte Docker-Konfiguration
+- Healthchecks für bessere Stabilität
+- Umgebungsvariablen für sichere Konfiguration
 
-## ✨ Features
+## Voraussetzungen
 
-* TYPO3 with automated setup
-* Comes with a database
-* TYPO3 version can be set in the environment variables
+- Docker und Docker Compose
+- Railway.app CLI (optional für Railway.app Deployment)
 
-## 🐍 How to Deploy
+## Schnellstart
 
-One click deploy on Railway.app and setup the TYPO3 version in the environment variables. Available versions: <https://hub.docker.com/r/crinis/typo3/tags>
+1. Repository klonen:
+   ```bash
+   git clone https://github.com/yourusername/railwayapp-typo3.git
+   cd railwayapp-typo3
+   ```
 
-```bash
-VERSION latest
-TYPO3_ADMIN_USERNAME - Initial admin username when installing TYPO3. (defaults to "admin")
-TYPO3_ADMIN_PASSWORD - Initial admin and Install Tool password when installing TYPO3.
-TYPO3_DB_HOST - Database host.
-TYPO3_DB_PORT - Database port. (defaults to "3306")
-TYPO3_DB_NAME - Database name.
-TYPO3_DB_USERNAME - Database username.
-TYPO3_DB_PASSWORD - Database password.
-TYPO3_SITE_NAME - Sets the sites title. (defaults to "TYPO3 CMS")
-TYPO3_CONTEXT - Could be "Production" or "Development" and is used by TYPO3 to determine if it runs in production or development mode. (defaults to "Production")
-MODIFY_LOCAL_CONFIGURATION - Set to "false" to disable modifications to your LocalConfiguration.php. (defaults to "true")
-SETUP_TYPO3_SRC - Setup symlinks for TYPO3 source that is shipped with the image. (defaults to "true")
-SETUP_TYPO3 - Attempts to setup TYPO3 ands adds a basic .htaccess file and cache configuration. (defaults to "true")
-```
+2. Umgebungsvariablen konfigurieren:
+   ```bash
+   cp .env.example .env
+   ```
+   Bearbeiten Sie die `.env`-Datei und setzen Sie sichere Passwörter.
 
-1. Click the "Deploy on Railway" button and wait for build & deployment to finish.
-2. Take a look to you MYSQL credentials in the Railway dashboard.
-3. Open the custom URL (<https://YOURTYPO3.up.railway.app>) and enter your database credentials in the setup wizard.
-4. Setup your TYPO3 instance and create a admin user.
-5. Enjoy your TYPO3 instance.
+3. Container starten:
+   ```bash
+   docker-compose up -d
+   ```
 
-## 🪲 Bug Reporting
+4. TYPO3 ist nun unter `http://localhost:8080` erreichbar.
 
-If you find a bug in TYPO3 template for reailway, you can [submit an issue](https://github.com/vergissberlin/railwayapp-typo3/issues/new) to the GitHub Repository. Even better you can submit a Pull Request with a fix.
+## Konfiguration
 
-## 🐳  Local Development
+### Umgebungsvariablen
+
+| Variable | Beschreibung | Standard |
+|----------|--------------|----------|
+| TYPO3_ADMIN_USERNAME | Admin-Benutzername | admin |
+| TYPO3_ADMIN_PASSWORD | Admin-Passwort | - |
+| TYPO3_DB_NAME | Datenbankname | typo3 |
+| TYPO3_DB_USERNAME | Datenbankbenutzer | typo3 |
+| TYPO3_DB_PASSWORD | Datenbankpasswort | - |
+| MYSQL_ROOT_PASSWORD | MariaDB Root-Passwort | - |
+| TYPO3_CONTEXT | TYPO3-Kontext | Development |
+| TZ | Zeitzone | Europe/Berlin |
+
+### Volumes
+
+- `railway-typo3-app`: TYPO3-Dateien
+- `railway-typo3-db`: MariaDB-Daten
+
+## Deployment auf Railway.app
+
+1. Railway.app CLI installieren
+2. Projekt initialisieren:
+   ```bash
+   railway init
+   ```
+3. Umgebungsvariablen setzen:
+   ```bash
+   railway variables set TYPO3_ADMIN_PASSWORD=your-secure-password
+   railway variables set TYPO3_DB_PASSWORD=your-secure-password
+   railway variables set MYSQL_ROOT_PASSWORD=your-secure-password
+   ```
+4. Deployen:
+   ```bash
+   railway up
+   ```
+
+## Runtime-Defaults auf Railway
+
+Dieses Template nutzt `railway.toml` mit folgenden Defaults:
+
+- Build ueber `DOCKERFILE`
+- Healthcheck auf `/`
+- Restart-Policy `ON_FAILURE` mit maximalen Retries
+
+## Sicherheit
+
+- Alle sensiblen Daten werden über Umgebungsvariablen konfiguriert
+- Standard-Passwörter wurden entfernt
+- Healthchecks für bessere Stabilität
+- Optimierte MariaDB-Konfiguration
+
+## Support
+
+Bei Fragen oder Problemen erstellen Sie bitte ein Issue im GitHub-Repository.
+
+## Lizenz
+
+MIT License - siehe [LICENSE](LICENSE) Datei für Details.
 
 ```bash
 docker compose up -d
