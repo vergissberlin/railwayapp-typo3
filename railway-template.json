@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/vergissberlin/railway/main/docs/railway-template.schema.json",
+  "schemaVersion": 1,
+  "project": "railwayapp-typo3",
+  "repo": "vergissberlin/railwayapp-typo3",
+  "displayName": "TYPO3",
+  "publishedCode": "typo3",
+  "image": "https://raw.githubusercontent.com/vergissberlin/railwayapp-typo3/main/template-header.svg",
+  "description": "Deploy TYPO3 CMS on Railway with MariaDB and production Docker defaults.",
+  "workspaceAutomation": false
+}
