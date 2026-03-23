@@ -113,3 +113,6 @@ Open an issue in the GitHub repository if you have questions or run into problem
 ## License
 
 MIT License — see the [LICENSE](LICENSE) file for details.
+
+<!-- footer -->
+[![TYPO3 CMS](https://img.shields.io/badge/TYPO3%20CMS-FF8700?style=for-the-badge&logo=typo3&logoColor=white)](https://github.com/vergissberlin/railwayapp-typo3)
