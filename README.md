@@ -1,5 +1,8 @@
 # TYPO3 Railway.app Template
 
+![Template Header](./template-header.svg)
+
+
 <p align="center">
   <img src="logo-typo3.png" alt="TYPO3" width="200" />
 </p>
