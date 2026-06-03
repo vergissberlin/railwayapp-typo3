@@ -33,7 +33,7 @@ services:
       retries: 3
 
   db:
-    image: mariadb:10.11
+    image: mariadb:12.3
     container_name: db
     restart: unless-stopped
     environment:
