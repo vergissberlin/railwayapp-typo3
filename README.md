@@ -67,6 +67,8 @@ This template helps you spin up a TYPO3 installation quickly with Docker and Rai
 - `railway-typo3-app`: TYPO3 files
 - `railway-typo3-db`: MariaDB data
 
+On Railway, this Dockerfile builds the TYPO3 service only. `railway.toml` declares `requiredMountPath = "/var/www/html"` so a Railway volume is enforced for `fileadmin`, `typo3conf`, and uploads. Deploy MariaDB as its own Railway service (e.g. via a MySQL-compatible plugin or the `railwayapp-mysql` template) with its own volume — the two containers in `docker-compose.yml` are meant to become two separate Railway services in production, not one.
+
 ### Database (Docker Compose)
 
 From the TYPO3 container, the database host is `db`. User, password, and database name are the values you set in `.env` (`TYPO3_DB_*`). See `docker-compose.yml` for how they are wired.
