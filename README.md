@@ -19,6 +19,16 @@ This template helps you spin up a TYPO3 installation quickly with Docker and Rai
 - Health checks for more stable runs
 - Environment variables for safer configuration
 
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    Client(["🌐 Client"]) -->|HTTPS| Domain["Railway Public Domain"]
+    Domain -->|"$PORT"| App["Container\ncrinis/typo3"]
+    App --> Volume[("Volume\n/var/www/html")]
+    App -.->|"TYPO3_DB_*"| DB[("Separate Railway service\nMariaDB (e.g. railwayapp-mysql)")]
+```
+
 ## Prerequisites
 
 - Docker and Docker Compose
