@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.1](https://github.com/vergissberlin/railwayapp-typo3/compare/v0.2.0...v0.2.1) (2026-08-20)
+
+
+### Documentation
+
+* refresh shared template footer badges ([e3705fd](https://github.com/vergissberlin/railwayapp-typo3/commit/e3705fd6f5b10771f942d91b95f7837107a3998f))
+
+
+### Chores
+
+* update shared template footer ([610535e](https://github.com/vergissberlin/railwayapp-typo3/commit/610535e4dead44e32fa82175352e0ac66e0a7b87))
+* update shared template footer ([4d98f2a](https://github.com/vergissberlin/railwayapp-typo3/commit/4d98f2ab94b65ce16376cd75d59ee544dc5177bc))
+
 ## [0.2.0](https://github.com/vergissberlin/railwayapp-typo3/compare/v0.1.0...v0.2.0) (2026-08-14)
 
 
