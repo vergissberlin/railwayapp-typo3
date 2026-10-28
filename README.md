@@ -127,6 +127,8 @@ This template uses `railway.toml` with these defaults:
 
 Open an issue in the GitHub repository if you have questions or run into problems.
 
+You can also ask questions or share feedback in the [template forum on Railway Central Station](https://station.railway.com/templates/typo3-cms-7c59e7f9).
+
 ## License
 
 GNU General Public License v3.0 — see the [LICENSE](LICENSE) file for details.
