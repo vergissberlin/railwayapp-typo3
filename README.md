@@ -9,7 +9,7 @@
 
 This template helps you spin up a TYPO3 installation quickly with Docker and Railway.app.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/typo3?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/typo3-cms?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 ## Features
 
@@ -126,6 +126,8 @@ This template uses `railway.toml` with these defaults:
 ## Support
 
 Open an issue in the GitHub repository if you have questions or run into problems.
+
+You can also ask questions or share feedback in the [template forum on Railway Central Station](https://station.railway.com/templates/typo3-cms-7c59e7f9).
 
 ## License
 
