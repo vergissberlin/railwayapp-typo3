@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.1](https://github.com/vergissberlin/railwayapp-typo3/compare/v0.2.0...v0.2.1) (2026-10-28)
+
+
+### Bug Fixes
+
+* **docker:** pin crinis/typo3 to 14.3 ([#14](https://github.com/vergissberlin/railwayapp-typo3/issues/14)) ([d6f839f](https://github.com/vergissberlin/railwayapp-typo3/commit/d6f839f306c843b92cf838d2a492274c0038c944))
+
+
+### Documentation
+
+* fix Railway deploy button link and add template forum link ([#13](https://github.com/vergissberlin/railwayapp-typo3/issues/13)) ([ed5e4f3](https://github.com/vergissberlin/railwayapp-typo3/commit/ed5e4f3e0444150afa753b1e595cf257c30401b8))
+* refresh shared template footer badges ([e3705fd](https://github.com/vergissberlin/railwayapp-typo3/commit/e3705fd6f5b10771f942d91b95f7837107a3998f))
+
+
+### Chores
+
+* **deps:** update mariadb docker tag to v13 ([#12](https://github.com/vergissberlin/railwayapp-typo3/issues/12)) ([be0ff1d](https://github.com/vergissberlin/railwayapp-typo3/commit/be0ff1d9ca4d4b368c2fa15ec708a82cef1f60a5))
+* update shared template footer ([610535e](https://github.com/vergissberlin/railwayapp-typo3/commit/610535e4dead44e32fa82175352e0ac66e0a7b87))
+* update shared template footer ([4d98f2a](https://github.com/vergissberlin/railwayapp-typo3/commit/4d98f2ab94b65ce16376cd75d59ee544dc5177bc))
+
 ## [0.2.0](https://github.com/vergissberlin/railwayapp-typo3/compare/v0.1.0...v0.2.0) (2026-08-14)
 
 
